@@ -1,0 +1,33 @@
+<div class="card text-center">
+  <div class="card-body">
+    <h4 class="card-title">Click here to start a trivia game!</h4>
+    <a [routerLink]="['/play']" class="btn btn-primary">Play</a>
+  </div>
+</div>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
+    Login
+</button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+          <button type="button" class="close" data-dismiss="modal">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form (submit)="login(loginForm)" #loginForm='ngForm'>
+          <div class="modal-body">
+                  <p>Name: <input type="text" name="name" [(ngModel)]="new_user.name"></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary" data-dismiss="modal" onclick="$('.modal').modal('hide')">Save name</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
