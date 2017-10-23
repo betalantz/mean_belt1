@@ -1,3 +1,76 @@
-<p *ngIf='(logged_user.name)'>
+<h5 *ngIf='(logged_user.name)'>
   Welcome, {{logged_user.name}}!
-</p>
+</h5>
+<form (submit)='score()'>
+  <div class="card">
+    <h4 class="card-header">{{quizQuestions[0].question}}</h4>
+    <div class="card-body">
+      <div class="form-check">
+        <label class="form-check-label">
+          <input class="form-check-input" type="radio" name="set1select" [(ngModel)]="quizResults.set1" value="{{quizQuestions[0].answers[0].isCorr}}">
+          {{quizQuestions[0].answers[0].answer }}
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input class="form-check-input" type="radio" name="set1select" [(ngModel)]="quizResults.set1" value="{{quizQuestions[0].answers[1].isCorr}}">
+          {{quizQuestions[0].answers[1].answer }}        
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input class="form-check-input" type="radio" name="set1select" [(ngModel)]="quizResults.set1" value="{{quizQuestions[0].answers[2].isCorr}}">
+          {{quizQuestions[0].answers[2].answer }}
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <h4 class="card-header">{{quizQuestions[1].question}}</h4>
+    <div class="card-body">
+      <div class="form-check">
+        <label class="form-check-label">
+          <input class="form-check-input" type="radio" name="set2select" [(ngModel)]="quizResults.set2" value="{{quizQuestions[1].answers[0].isCorr}}">
+          {{quizQuestions[1].answers[0].answer }}
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input class="form-check-input" type="radio" name="set2select" [(ngModel)]="quizResults.set2" value="{{quizQuestions[1].answers[1].isCorr}}">
+          {{quizQuestions[1].answers[1].answer }}        
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input class="form-check-input" type="radio" name="set2select" [(ngModel)]="quizResults.set2" value="{{quizQuestions[1].answers[2].isCorr}}">
+          {{quizQuestions[1].answers[2].answer }}
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <h4 class="card-header">{{quizQuestions[2].question}}</h4>
+    <div class="card-body">
+      <div class="form-check">
+        <label class="form-check-label">
+          <input class="form-check-input" type="radio" name="set3select" [(ngModel)]="quizResults.set3" value="{{quizQuestions[2].answers[0].isCorr}}">
+          {{quizQuestions[2].answers[0].answer }}
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input class="form-check-input" type="radio" name="set3select" [(ngModel)]="quizResults.set3" value="{{quizQuestions[2].answers[1].isCorr}}">
+          {{quizQuestions[2].answers[1].answer }}        
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input class="form-check-input" type="radio" name="set3select" [(ngModel)]="quizResults.set3" value="{{quizQuestions[2].answers[2].isCorr}}">
+          {{quizQuestions[2].answers[2].answer }}
+        </label>
+      </div>
+    </div>
+  </div>
+  <input class="btn btn-secondary" type="button" value="Cancel">
+  <button class="btn btn-primary" type="submit">Submit</button>
+</form>

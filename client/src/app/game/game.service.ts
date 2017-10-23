@@ -15,5 +15,7 @@ export class GameService {
   login_stat() {
     return this.http.get("/login_stat").map(data => data.json()).toPromise()
   }
-
+  getQuestions () {
+    return this.http.get('/getQuestions').map(data => data.json()).toPromise()
+  }
 }

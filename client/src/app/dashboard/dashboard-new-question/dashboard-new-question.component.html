@@ -1,3 +1,22 @@
-<p>
-  dashboard-new-question works!
-</p>
+<h2>New Question</h2>
+
+<form (submit)="addQuestion()">
+  <div class="form-group">
+    <label for="newQuestion">Question:</label>
+    <textarea class="form-control" id="newQuestion" rows="3" name="question" [(ngModel)]="new_question.question" #question='ngModel'></textarea>
+  </div>
+  <div class="form-group">
+    <label class="col-form-label" for="corrAnswer">Correct Answer:</label>
+    <input type="text" class="form-control" id="corrAnswer" name="corrAnswer"[(ngModel)]="new_question.corrAnswer" #corrAnswer='ngModel'>
+  </div>
+  <div class="form-group">
+    <label class="col-form-label" for="fake1">Fake Answer 1:</label>
+    <input type="text" class="form-control" id="fake1" name="fake1" [(ngModel)]="new_question.fake1" #fake1='ngModel'>
+  </div>
+  <div class="form-group">
+    <label class="col-form-label" for="fake2">Fake Answer 2:</label>
+    <input type="text" class="form-control" id="fake2" name="fake2" [(ngModel)]="new_question.fake2" #fake2='ngModel'>
+  </div>
+  <input class="btn btn-secondary" type="button" value="Cancel">
+  <button class="btn btn-primary" type="submit">Add Question</button>
+</form>
