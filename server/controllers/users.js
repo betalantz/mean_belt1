@@ -3,7 +3,7 @@ const User = mongoose.model("User")
 
 module.exports = {
 	getUsers: (req, res) => {
-		User.find()
+		User.find().sort('-score')
 			.then(users => {
 				res.json(users)
 			})

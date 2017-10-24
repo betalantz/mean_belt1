@@ -32,6 +32,7 @@
     </div>
   </div>
   
+  <div><input type="text" [(ngModel)]='searchText' placeholder="Search..."></div>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -41,7 +42,7 @@
       </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let player of all_users; let idx=index">
+    <tr *ngFor="let player of all_users | filter: searchText">
         <td scope="row">{{player.name}}</td>
         <td>{{player.score}}/3</td>
         <td>{{player.percent}}%</td>        

@@ -11,7 +11,8 @@ import { DashboardHomeComponent } from './dashboard/dashboard-home/dashboard-hom
 import { DashboardNewQuestionComponent } from './dashboard/dashboard-new-question/dashboard-new-question.component';
 
 import { DashboardService } from './dashboard/dashboard.service'
-import { GameService } from './game/game.service'
+import { GameService } from './game/game.service';
+import { FilterPipe } from './filter.pipe'
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { GameService } from './game/game.service'
     GameComponent,
     DashboardComponent,
     DashboardHomeComponent,
-    DashboardNewQuestionComponent
+    DashboardNewQuestionComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
