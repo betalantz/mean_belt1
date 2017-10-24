@@ -53,11 +53,22 @@ module.exports = {
 		User.update({_id: id}, {score: score, percent: perc}) .then ((err, user) => {
 			if(err){
 				console.log('Update score error in controller', err);
-				res.json(true)
+				res.json(req.session.user)
 			} else {
 				console.log('player score updated at ctrl');
 				res.json(true)
 			}
+		})
+	},
+	get_curr: (req, res) => {
+		let id = req.session.user._id
+		User.findOne({_id: id})
+		.then(user => {
+			res.json(user)
+		})
+		.catch(err => {
+			console.log("User.findOne error", err)
+			res.status(500).json(err)
 		})
 	}
 }

@@ -25,4 +25,7 @@ export class DashboardService {
   login_stat() {
     return this.http.get("/login_stat").map(data => data.json()).toPromise()
   }
+  get_curr() {
+    return this.http.get("/get_curr").map(data => data.json()).toPromise()
+  }
 }

@@ -11,5 +11,6 @@ module.exports = app => {
     app.get('/getQuestions', games.get_all)
     app.post('/updateScore', users.setScore)
     app.get('/get_users', users.getUsers)
+    app.get('/get_curr', users.get_curr)
     app.get("*", (req, res) => res.sendFile(path.resolve("./client/dist/index.html")))
 }

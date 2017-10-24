@@ -17,6 +17,6 @@
     <label class="col-form-label" for="fake2">Fake Answer 2:</label>
     <input type="text" class="form-control" id="fake2" name="fake2" [(ngModel)]="new_question.fake2" #fake2='ngModel'>
   </div>
-  <input class="btn btn-secondary" type="button" value="Cancel">
+  <a class="btn btn-secondary" [routerLink]="['/dashboard', 'home']">Cancel</a>
   <button class="btn btn-primary" type="submit">Add Question</button>
 </form>

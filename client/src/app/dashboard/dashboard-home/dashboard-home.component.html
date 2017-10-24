@@ -31,7 +31,10 @@
       </div>
     </div>
   </div>
-  
+  <div *ngIf="curr_user && curr_user.score" class="alert alert-success" role="alert">
+    That was great, {{curr_user.name}}! Your score is {{curr_user.score}}/3 ({{curr_user.percent}}%).
+  </div>
+  <br>
   <div><input type="text" [(ngModel)]='searchText' placeholder="Search..."></div>
   <table class="table table-striped">
     <thead>

@@ -14,6 +14,7 @@ export class DashboardHomeComponent implements OnInit {
   new_user: User
   logged_user: User
   all_users: Array<User>
+  curr_user: User
 
   constructor(
     private _dashboard_service: DashboardService, 
@@ -24,6 +25,7 @@ export class DashboardHomeComponent implements OnInit {
     this.new_user = new User 
     this.get_users()
     this.inSession()
+    this.get_curr()
   }
   showModal() {
     if (!this.logged_user) {
@@ -49,5 +51,13 @@ export class DashboardHomeComponent implements OnInit {
       .then(user => this.logged_user = user)
       // .catch(() => this._router.navigate(["/dashboard/home"]))
       .catch(() => this.showModal())
+  }
+  get_curr() {
+    this._dashboard_service.get_curr()
+      .then(user => {
+        console.log('Current user returned', user)
+        this.curr_user = user
+      })
+      .catch(err => console.log('Error in get_curr', err))
   }
 }

@@ -2,7 +2,7 @@
   Welcome, {{logged_user.name}}!
 </h5>
 <form (submit)='score()'>
-  <div class="card">
+  <div *ngIf="quizQuestions[0]" class="card">
     <h4 class="card-header">{{quizQuestions[0].question}}</h4>
     <div class="card-body">
       <div class="form-check">
@@ -25,7 +25,7 @@
       </div>
     </div>
   </div>
-  <div class="card">
+  <div *ngIf="quizQuestions[1]" class="card">
     <h4 class="card-header">{{quizQuestions[1].question}}</h4>
     <div class="card-body">
       <div class="form-check">
@@ -48,7 +48,7 @@
       </div>
     </div>
   </div>
-  <div class="card">
+  <div *ngIf="quizQuestions[2]" class="card">
     <h4 class="card-header">{{quizQuestions[2].question}}</h4>
     <div class="card-body">
       <div class="form-check">
@@ -71,6 +71,6 @@
       </div>
     </div>
   </div>
-  <input class="btn btn-secondary" type="button" value="Cancel">
+  <a class="btn btn-secondary" [routerLink]="['/dashboard', 'home']">Cancel</a>
   <button class="btn btn-primary" type="submit">Submit</button>
 </form>
