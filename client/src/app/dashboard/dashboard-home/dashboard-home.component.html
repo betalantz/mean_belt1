@@ -31,3 +31,21 @@
       </div>
     </div>
   </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Player Name</th>
+        <th>Score</th>
+        <th>Percentage</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let player of all_users; let idx=index">
+        <td scope="row">{{player.player}}</td>
+        <td>{{player.position}}</td>
+        <td>
+            <button class="btn btn-danger btn-sm" (click)="delPlayer(player._id)">Delete</button>
+        </td>
+    </tr>
+    </tbody>
+  </table>

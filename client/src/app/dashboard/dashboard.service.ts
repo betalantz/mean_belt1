@@ -19,4 +19,7 @@ export class DashboardService {
   addQuestion(new_question) {
     return this.http.post('/addQuestion', new_question).map(data => data.json()).toPromise()
   }
+  get_users(){
+    return this.http.get('/get_users').map(data => data.json()).toPromise()
+  }
 }

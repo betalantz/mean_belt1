@@ -17,7 +17,7 @@ export class GameComponent implements OnInit {
   quizQuestions: Array<Question> = []
   quizResults = {}
 
-  constructor(private _game_service: GameService, private router: Router ) { }
+  constructor(private _game_service: GameService, private _router: Router ) { }
 
   ngOnInit() {
     this.inSession()
@@ -26,15 +26,17 @@ export class GameComponent implements OnInit {
   inSession() {
     this._game_service.login_stat()
       .then(user => this.logged_user = user)
-      .catch(() => this.router.navigate(["/dashboard/home"]))
+      .catch(() => this._router.navigate(["/dashboard/home"]))
   }
   getQuestions(){
     this._game_service.getQuestions()
       .then(results => {
         this.allQuestions = results
+        
         this.shuffleArray(this.allQuestions)
+        
         for(let i=0; i<3; i++){
-          // this.shuffleArray(this.allQuestions[i].answers)
+          this.allQuestions[i].answers = this.shuffleArray(this.allQuestions[i].answers)
           this.quizQuestions.push(this.allQuestions[i])
         }
         console.log(this.quizQuestions)
@@ -52,10 +54,15 @@ export class GameComponent implements OnInit {
     console.log('quiz results submitted', this.quizResults);
     let score = 0
     for(let rightAns in this.quizResults){
-      if(this.quizResults[rightAns]){
+      if(this.quizResults[rightAns]=='true'){
         score++
       }
     }
-    console.log(this.logged_user, 'got a score of', score)
+    console.log(this.logged_user.name, 'got a score of', score)
+    this._game_service.updateScore({score:score}) 
+      .then(() => this._router.navigate(['']))
+      .catch(err => {
+        alert('Please try again.')
+      })
   }
 }

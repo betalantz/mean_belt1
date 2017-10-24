@@ -2,14 +2,16 @@ const mongoose = require("mongoose")
 const User = mongoose.model("User")
 
 module.exports = {
-	// get_all: (req, res) => {
-	// 	User.find({})
-	// 		.then(users => res.json(users))
-	// 		.catch(err => {
-	// 			console.log("User.find error", err)
-	// 			res.status(500).json(err)
-	// 		})
-	// },
+	getUsers: (req, res) => {
+		User.find()
+			.then(users => {
+				res.json(users)
+			})
+			.catch(err => {
+				console.log("User.find error", err)
+				res.status(500).json(err)
+			})
+	},
 
 	login: (req, res) => {
         let new_user = new User(req.body)
@@ -40,5 +42,22 @@ module.exports = {
 		req.session.destroy()
         console.log('user logged out');
         res.redirect("/")
+	},
+	setScore: (req, res) => {
+		let id = req.session.user._id
+		console.log(id)
+		let score = req.body.score
+		console.log(score);
+		let perc = Math.floor((score/3)*100)
+		console.log(perc);
+		User.update({_id: id}, {score: score, percent: perc}) .then ((err, user) => {
+			if(err){
+				console.log('Update score error in controller', err);
+				res.json(true)
+			} else {
+				console.log('player score updated at ctrl');
+				res.json(true)
+			}
+		})
 	}
 }

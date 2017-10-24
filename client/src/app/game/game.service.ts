@@ -15,7 +15,10 @@ export class GameService {
   login_stat() {
     return this.http.get("/login_stat").map(data => data.json()).toPromise()
   }
-  getQuestions () {
+  getQuestions() {
     return this.http.get('/getQuestions').map(data => data.json()).toPromise()
+  }
+  updateScore(score) {
+    return this.http.post('/updateScore', score).map(data => data.json()).toPromise()
   }
 }
