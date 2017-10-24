@@ -22,4 +22,7 @@ export class DashboardService {
   get_users(){
     return this.http.get('/get_users').map(data => data.json()).toPromise()
   }
+  login_stat() {
+    return this.http.get("/login_stat").map(data => data.json()).toPromise()
+  }
 }
